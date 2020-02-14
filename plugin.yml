@@ -1,0 +1,23 @@
+name: Dungeonizator
+main: com.dungeons.detector.starter
+version: 1.0
+api-version: 1.15
+commands:
+   state:
+      description: Pega o estado do bloco (usado no desenvolvimento do plugin)
+      usage: /state
+   addcord:
+      description: Adiciona as coordenadas do bloco selecionado
+      usage: /addcord here OU /addcord X Y Z OU /addcord (no terceiro caso, pega o bloco que está olhando, com limite de 5 blocos naquela direção.)
+   remcord:
+      description: Remove as coordenadas do bloco selecionado
+      usage: /remcord here OU /remcord X Y Z OU /remcord (no terceiro caso, pega o bloco que está olhando, com limite de 5 blocos naquela direção.)
+   addcomb:
+      description: Adiciona um comando de bloco.
+      usage: /addcomb <Coordenadas do bloco observado> <Mundo do bloco observado> <Coordenadas do bloco a ativar> <Mundo do bloco a ativar> (as coordenadas são dadas pelos valores x,y e z, podendo ser especificadas por números ou por ~ para a coordenada de quem executa o comando ou por ^ para o local onde a pessoa que executa o comando está olhando, com limite de 5 blocos. Por fim, o mundo pode ser especificado pelo seu nome ou por "here")
+   addtruc:
+      description: Adiciona um comando de comando mesmo (do vanilla).
+      usage: /addtruc <Coordenadas do bloco observado> <Mundo do bloco observado> run <comando> OU /addtruc <Coordenadas do bloco observado> <Mundo do bloco observado> <Coordenadas do bloco de comando> <Mundo do bloco de comando>
+   setcanc:
+      description: Faz com que o evento de o player clicar no bloco seja cancelado.
+      usage: /setcanc here OU /setcanc X Y Z OU /setcanc (no terceiro caso, pega o bloco que está olhando, com limite de 5 blocos naquela direção.)
