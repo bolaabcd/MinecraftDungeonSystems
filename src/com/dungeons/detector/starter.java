@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.dungeons.actor.AddComandoBlocarea;
 import com.dungeons.actor.AdicionarComandoBloco;
 import com.dungeons.actor.AdicionarTrueComando;
 import com.dungeons.actor.CancelarInteracao;
@@ -16,7 +17,7 @@ import com.dungeons.actor.SetarCancelar;
 public class starter extends JavaPlugin{
 	@Override
     public void onEnable() {
-    Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN+"PLUGIN ATIVADO!");
+    Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN+"PLUGIN DE DUNGEONS ATIVADO!");
     
     setcomandos();
     
@@ -26,7 +27,7 @@ public class starter extends JavaPlugin{
 	}
     @Override
     public void onDisable() {
-    Bukkit.getConsoleSender().sendMessage(ChatColor.RED+"PLUGIN DESATIVADO!");
+    Bukkit.getConsoleSender().sendMessage(ChatColor.RED+"PLUGIN DE DUNGEONS DESATIVADO!");
 
     }
     private void criarquivo() {
@@ -56,5 +57,6 @@ public class starter extends JavaPlugin{
     	this.getCommand("addcomb").setExecutor(new AdicionarComandoBloco());
     	this.getCommand("addtruc").setExecutor(new AdicionarTrueComando());
     	this.getCommand("setcanc").setExecutor(new SetarCancelar());
+    	this.getCommand("addcombs").setExecutor(new AddComandoBlocarea());
     }
 }
