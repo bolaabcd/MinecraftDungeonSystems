@@ -45,7 +45,7 @@ public class addCords implements CommandExecutor{
 				try {
 					player.sendMessage(editcord(player.getTargetBlockExact(5).getLocation(),label));
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
+					player.sendMessage(ChatColor.RED+"Erro Inesperado!");
 					e.printStackTrace();
 				}
 			}else res=false;

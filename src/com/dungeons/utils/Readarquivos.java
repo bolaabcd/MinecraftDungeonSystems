@@ -22,15 +22,15 @@ public class Readarquivos {
 		while((linha=br.readLine())!=null) {
 			if(linha.equals("X"+x)) {
 				temx=true;
-			}else if(temx&&temy&&temz) {
-				if(linha.equals(w)) {
+			}else if(linha.equals(w)) {
+				if(temx&&temy&&temz) {
 					br.close();
 					return true;
 					}
-			}else if(temx&&temy) {
-				if(linha.equals("Z"+z))temz=true;
-			}else if(temx) {
-				if(linha.equals("Y"+y))temy=true;
+			}else if(linha.equals("Z"+z)) {
+				if(temx&&temy)temz=true;
+			}else if(linha.equals("Y"+y)) {
+				if(temx)temy=true;
 			}else {
 				temx=false;
 				temy=false;
@@ -58,6 +58,11 @@ public class Readarquivos {
 				linhatual=0;
 				tipo="C";
 			}
+			else if(linha.equals("T")) {
+				args=new String[6];
+				linhatual=0;
+				tipo="T";
+			}
 			
 			if(tipo.equals("B")) {
 				args[linhatual]=linha;
@@ -65,13 +70,22 @@ public class Readarquivos {
 					tipo="";
 					Commandos.direcionar(args);
 				}
-			}else if(tipo.equals("C")) {
+			}
+			else if(tipo.equals("C")) {
 				args[linhatual]=linha;
 				if(linhatual==1) {
 					tipo="";
 					Commandos.direcionar(args);
 				}
 			}
+			else if(tipo.equals("T")) {
+				args[linhatual]=linha;
+				if(linhatual==5) {
+					tipo="";
+					Commandos.direcionar(args);
+				}
+			}
+			
 			
 		}
 		br.close();

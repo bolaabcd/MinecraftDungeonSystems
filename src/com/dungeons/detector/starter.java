@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.dungeons.actor.AddComandoBlocarea;
@@ -15,6 +16,7 @@ import com.dungeons.actor.RedstoneListener;
 import com.dungeons.actor.SetarCancelar;
 
 public class starter extends JavaPlugin{
+	private static Plugin instancia;
 	@Override
     public void onEnable() {
     Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN+"PLUGIN DE DUNGEONS ATIVADO!");
@@ -24,6 +26,8 @@ public class starter extends JavaPlugin{
     setlisteners();
 	
     criarquivo();
+    
+    instancia=this;
 	}
     @Override
     public void onDisable() {
@@ -59,4 +63,8 @@ public class starter extends JavaPlugin{
     	this.getCommand("setcanc").setExecutor(new SetarCancelar());
     	this.getCommand("addcombs").setExecutor(new AddComandoBlocarea());
     }
+    public static Plugin getPlugin() {
+    	return instancia;
+    }
+    
 }
