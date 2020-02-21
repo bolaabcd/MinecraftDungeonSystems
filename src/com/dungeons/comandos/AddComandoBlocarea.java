@@ -1,4 +1,4 @@
-package com.dungeons.actor;
+package com.dungeons.comandos;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -43,6 +43,7 @@ public class AddComandoBlocarea implements CommandExecutor{
 			} catch (IOException e) {
 				player.sendMessage(ChatColor.DARK_RED+"ERRO INESPERADO: Erro ao ler arquivo!");
 				e.printStackTrace();
+				player.sendMessage(e.getMessage());
 				return true;
 			}
 
@@ -54,6 +55,7 @@ public class AddComandoBlocarea implements CommandExecutor{
 				return true;
 			}
 			try {
+				int x=0;
 			for(Location[][] l1:teste)
 				for(Location[] l2:l1)
 					for(Location l:l2) {
@@ -62,12 +64,14 @@ public class AddComandoBlocarea implements CommandExecutor{
 							continue;
 						}
 						ArquivosWritter.commbloco("plugins/Dungeonizator/roteiros/"+"X"+cordsob[0]+"Y"+cordsob[1]+"Z"+cordsob[2]+"W"+args[3]+".txt", l.getBlockX(), l.getBlockY(), l.getBlockZ(), l.getWorld().getName());
-					
+						x++;
 					}
+			player.sendMessage(ChatColor.GREEN+"Adicionados "+String.valueOf(x)+" blocos!");
 			} catch (IOException e) {
 				player.sendMessage(ChatColor.DARK_RED+"ERRO INESPERADO: Erro ao ler arquivo!");
 				e.printStackTrace();
-				return false;
+				player.sendMessage(e.getMessage());
+				return true;
 			}
 
 			return true;

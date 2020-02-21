@@ -1,4 +1,4 @@
-package com.dungeons.actor;
+package com.dungeons.comandos;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -52,7 +52,7 @@ public class SetarCancelar implements CommandExecutor{
 						};
 				if(Arrays.asList(validos).contains(loc.getBlock().getBlockData().getMaterial())) {
 					player.sendMessage(ChatColor.RED+"O bloco especificado não é válido para os propósitos desse comando");
-					return false;
+					return true;
 				}
 				String tudo=new String(Files.readAllBytes(Paths.get(path)));
 				BufferedWriter bw =new BufferedWriter(new FileWriter(new File(path),false));
@@ -61,13 +61,14 @@ public class SetarCancelar implements CommandExecutor{
 			} catch (IOException e) {
 				player.sendMessage(ChatColor.RED+"Erro ao ler o arquivo de comando para o bloco especificado! Talvez o bloco não esteja registrado...");
 				e.printStackTrace();
-				return false;
+				player.sendMessage(e.getMessage());
+				return true;
 			}
 
 			
 		}else {
 			sender.sendMessage(ChatColor.RED+"Comando para players apenas.");
-			return false;
+			return true;
 		}
 		return true;
 	}

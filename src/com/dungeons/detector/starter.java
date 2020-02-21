@@ -8,13 +8,15 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.dungeons.actor.AddComandoBlocarea;
-import com.dungeons.actor.Addtemporizator;
-import com.dungeons.actor.AdicionarComandoBloco;
-import com.dungeons.actor.AdicionarTrueComando;
 import com.dungeons.actor.CancelarInteracao;
 import com.dungeons.actor.RedstoneListener;
-import com.dungeons.actor.SetarCancelar;
+import com.dungeons.comandos.AddComandoBlocarea;
+import com.dungeons.comandos.Addtemporizator;
+import com.dungeons.comandos.AdicionarComandoBloco;
+import com.dungeons.comandos.AdicionarTrueComando;
+import com.dungeons.comandos.GetStado;
+import com.dungeons.comandos.SetarCancelar;
+import com.dungeons.comandos.addCords;
 
 public class starter extends JavaPlugin{
 	private static Plugin instancia;

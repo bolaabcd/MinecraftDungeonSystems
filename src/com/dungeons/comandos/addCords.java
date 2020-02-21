@@ -1,4 +1,4 @@
-package com.dungeons.detector;
+package com.dungeons.comandos;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -31,14 +31,12 @@ public class addCords implements CommandExecutor{
 				try {
 					player.sendMessage(editcord(player.getLocation(),label));
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}else if (args.length==3&&LerComandos.tudonumero(args)) {
 				try {
 					player.sendMessage(editcord(new Location(player.getWorld(),Double.valueOf(Integer.valueOf(args[0])),Double.valueOf(Integer.valueOf(args[1])),Double.valueOf(Integer.valueOf(args[2]))),label));
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}else if (args.length==0) {
@@ -47,9 +45,13 @@ public class addCords implements CommandExecutor{
 				} catch (Exception e) {
 					player.sendMessage(ChatColor.RED+"Erro Inesperado!");
 					e.printStackTrace();
+					player.sendMessage(e.getMessage());
 				}
 			}else res=false;
-		}else res=false;
+		}else {
+			res=true;
+			sender.sendMessage(ChatColor.RED+"Comando apenas para players!");
+		}
 		return res;
 	}
 

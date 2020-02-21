@@ -1,4 +1,4 @@
-package com.dungeons.actor;
+package com.dungeons.comandos;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -40,17 +40,18 @@ public class Addtemporizator implements CommandExecutor{
 				if(Readarquivos.hascoords(cordsob[0],cordsob[1],cordsob[2],args[3])) {
 					if(Readarquivos.hascomando("plugins/Dungeonizator/roteiros/"+"X"+cordsob[0]+"Y"+cordsob[1]+"Z"+cordsob[2]+"W"+args[3]+".txt", "T"+"\n"+Integer.toString(tempo)+Integer.toString(cordsat[0])+"\n"+Integer.toString(cordsat[1])+"\n"+Integer.toString(cordsat[2])+"\n"+args[7]+"\n"+Bukkit.getWorld(args[7]).getBlockAt(cordsat[0], cordsat[1], cordsat[2]).getBlockData().getAsString()+"\n")) {
 						player.sendMessage(ChatColor.RED+"Comando já salvo!");
-						return false;
+						return true;
 					}
 					ArquivosWritter.commtempo("plugins/Dungeonizator/roteiros/"+"X"+cordsob[0]+"Y"+cordsob[1]+"Z"+cordsob[2]+"W"+args[3]+".txt", cordsat[0], cordsat[1], cordsat[2], args[7],tempo);
 				}else {
 					player.sendMessage(ChatColor.DARK_RED+"Coordenadas de entrada não salvas!");
-					return false;
+					return true;
 				}
 			} catch (IOException e) {
 				player.sendMessage(ChatColor.RED+"ERRO INESPERADO: Erro ao ler os arquivos de observação de blocos ou o arquivo de comando para o bloco especificado!");
 				e.printStackTrace();
-				return false;
+				player.sendMessage(e.getMessage());
+				return true;
 			}
 			}else {
 				sender.sendMessage(ChatColor.RED+"Comando para players apenas.");
