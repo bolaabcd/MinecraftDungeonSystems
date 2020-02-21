@@ -24,3 +24,6 @@ commands:
    addcombs:
       description: Adiciona um comando de uma área de blocos.
       usage: /addcombs <Coordenadas observadas> <Mundo observado> <Coordenadas do bloco inicial> <Mundo do bloco inicial> <Coordenadas do bloco final> <Mundo do bloco final>
+   addtemp:
+      description: Adiciona um temporizador para ativar outros comandos
+      usage: /addtemp <Coordenadas do bloco observado> <Mundo do bloco observado> <Coordenadas do bloco a ativar> <Mundo do bloco a ativar> <tempo de espera (em ticks do servidor)>

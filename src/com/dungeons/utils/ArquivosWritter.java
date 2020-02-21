@@ -18,4 +18,14 @@ public static void commbloco(String arquivo, int x,int y,int z,String w) throws 
 	bw.append(Bukkit.getWorld(w).getBlockAt(x, y, z).getBlockData().getAsString()+"\n");
 	bw.close();
 	}
+public static void commtempo(String arquivo,int x,int y,int z,String w,int tempo) throws IOException {
+	BufferedWriter bw=new BufferedWriter(new FileWriter(new File(arquivo),true));
+	bw.append("T"+"\n");
+	bw.append(Integer.toString(tempo)+"\n");
+	bw.append(Integer.toString(x)+"\n");
+	bw.append(Integer.toString(y)+"\n");
+	bw.append(Integer.toString(z)+"\n");
+	bw.append(w+"\n");
+	bw.close();
+}
 }

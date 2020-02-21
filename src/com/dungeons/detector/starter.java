@@ -9,6 +9,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.dungeons.actor.AddComandoBlocarea;
+import com.dungeons.actor.Addtemporizator;
 import com.dungeons.actor.AdicionarComandoBloco;
 import com.dungeons.actor.AdicionarTrueComando;
 import com.dungeons.actor.CancelarInteracao;
@@ -37,7 +38,6 @@ public class starter extends JavaPlugin{
     private void criarquivo() {
     	File armazem = new File("plugins/Dungeonizator/locais.txt");
     	File comandos=new File("plugins/Dungeonizator/roteiros");
-    	File condicoes=new File("plugins/Dungeonizator/condicoes");
     	if (!armazem.exists()) {
     	try {
     		new File("plugins/Dungeonizator").mkdir();
@@ -47,7 +47,6 @@ public class starter extends JavaPlugin{
 		}
     	}
     	if(!comandos.exists())comandos.mkdir();
-    	if(!condicoes.exists())condicoes.mkdir();
 
     }
     private void setlisteners() {
@@ -62,6 +61,7 @@ public class starter extends JavaPlugin{
     	this.getCommand("addtruc").setExecutor(new AdicionarTrueComando());
     	this.getCommand("setcanc").setExecutor(new SetarCancelar());
     	this.getCommand("addcombs").setExecutor(new AddComandoBlocarea());
+    	this.getCommand("addtemp").setExecutor(new Addtemporizator());
     }
     public static Plugin getPlugin() {
     	return instancia;
