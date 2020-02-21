@@ -57,7 +57,7 @@ public class Addtemporizator implements CommandExecutor{
 				sender.sendMessage(ChatColor.RED+"Comando para players apenas.");
 				return true;
 			}
-		return false;
+		return true;
 	}
 
 }

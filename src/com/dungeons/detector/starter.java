@@ -14,8 +14,10 @@ import com.dungeons.comandos.AddComandoBlocarea;
 import com.dungeons.comandos.Addtemporizator;
 import com.dungeons.comandos.AdicionarComandoBloco;
 import com.dungeons.comandos.AdicionarTrueComando;
+import com.dungeons.comandos.FastArea;
 import com.dungeons.comandos.GetStado;
 import com.dungeons.comandos.SetarCancelar;
+import com.dungeons.comandos.UpdateBlocks;
 import com.dungeons.comandos.addCords;
 
 public class starter extends JavaPlugin{
@@ -64,6 +66,8 @@ public class starter extends JavaPlugin{
     	this.getCommand("setcanc").setExecutor(new SetarCancelar());
     	this.getCommand("addcombs").setExecutor(new AddComandoBlocarea());
     	this.getCommand("addtemp").setExecutor(new Addtemporizator());
+    	this.getCommand("fastarea").setExecutor(new FastArea());
+    	this.getCommand("upblocks").setExecutor(new UpdateBlocks());
     }
     public static Plugin getPlugin() {
     	return instancia;

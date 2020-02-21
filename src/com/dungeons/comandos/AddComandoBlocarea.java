@@ -10,10 +10,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.dungeons.utils.ArquivosWritter;
+import com.dungeons.detector.starter;
+import com.dungeons.utils.AssyncWritter;
 import com.dungeons.utils.BlocoUtilidades;
 import com.dungeons.utils.LerComandos;
 import com.dungeons.utils.Readarquivos;
+import com.dungeons.utils.Variaveis;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -54,8 +56,22 @@ public class AddComandoBlocarea implements CommandExecutor{
 				player.sendMessage(ChatColor.RED+"Não dá pra selecionar uma área de blocos em mundos diferentes!");
 				return true;
 			}
+			int quantosblocos=teste.length*teste[0].length*teste[0][0].length;
+			if(quantosblocos>1000000) {
+				player.sendMessage(ChatColor.RED+"um MILHÃO de blocos é muita coisa viu! Faz isso não...");
+				return true;
+			}
+			else if(quantosblocos>125000&&!Variaveis.ignore_area_commands) {
+				player.sendMessage(ChatColor.RED+"O limite é 125000 blocos (a menos que você ative o modo rápido. Mas se você fizer isso, será possível salvar repetidas vezes o mesmo comando, o que não é bacana.)");
+				return true;
+			}
+			if(quantosblocos>50000)player.sendMessage(ChatColor.YELLOW+"Pode demorar...");
+					
+			(new AssyncWritter("plugins/Dungeonizator/roteiros/"+"X"+cordsob[0]+"Y"+cordsob[1]+"Z"+cordsob[2]+"W"+args[3]+".txt",player,teste)).runTaskAsynchronously(starter.getPlugin());
+			/*
 			try {
 				int x=0;
+				
 			for(Location[][] l1:teste)
 				for(Location[] l2:l1)
 					for(Location l:l2) {
@@ -63,17 +79,18 @@ public class AddComandoBlocarea implements CommandExecutor{
 							player.sendMessage(ChatColor.YELLOW+"Comando já salvo! Ignorando...");
 							continue;
 						}
-						ArquivosWritter.commbloco("plugins/Dungeonizator/roteiros/"+"X"+cordsob[0]+"Y"+cordsob[1]+"Z"+cordsob[2]+"W"+args[3]+".txt", l.getBlockX(), l.getBlockY(), l.getBlockZ(), l.getWorld().getName());
+						//ArquivosWritter.commbloco("plugins/Dungeonizator/roteiros/"+"X"+cordsob[0]+"Y"+cordsob[1]+"Z"+cordsob[2]+"W"+args[3]+".txt", l.getBlockX(), l.getBlockY(), l.getBlockZ(), l.getWorld().getName());
 						x++;
 					}
 			player.sendMessage(ChatColor.GREEN+"Adicionados "+String.valueOf(x)+" blocos!");
+			
 			} catch (IOException e) {
 				player.sendMessage(ChatColor.DARK_RED+"ERRO INESPERADO: Erro ao ler arquivo!");
 				e.printStackTrace();
 				player.sendMessage(e.getMessage());
 				return true;
 			}
-
+			*/
 			return true;
 		}else {
 		sender.sendMessage(ChatColor.RED+"Comando para players apenas.");

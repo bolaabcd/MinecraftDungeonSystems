@@ -27,3 +27,9 @@ commands:
    addtemp:
       description: Adiciona um temporizador para ativar outros comandos
       usage: /addtemp <Coordenadas do bloco observado> <Mundo do bloco observado> <Coordenadas do bloco a ativar> <Mundo do bloco a ativar> <tempo de espera (em ticks do servidor)>
+   fastarea:
+      description: Alterna se os blocos em área devem ou não checar cada um dos blocos. (desative apenas para construções grandes)
+      usage: /fastarea
+   upblocks:
+      description: Alterna se os blocos devem ou não atualizar os blocos ao redor.
+      usage: /upblocks
