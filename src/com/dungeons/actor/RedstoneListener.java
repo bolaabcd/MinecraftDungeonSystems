@@ -2,14 +2,11 @@ package com.dungeons.actor;
 
 import java.io.IOException;
 
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockRedstoneEvent;
 
 import com.dungeons.utils.Readarquivos;
-
-import net.md_5.bungee.api.ChatColor;
 
 public class RedstoneListener implements Listener{
     @EventHandler
@@ -27,7 +24,7 @@ public class RedstoneListener implements Listener{
 				Readarquivos.sendcommands("plugins/Dungeonizator/roteiros/"+"X"+event.getBlock().getLocation().getBlockX()+"Y"+event.getBlock().getLocation().getBlockY()+"Z"+event.getBlock().getLocation().getBlockZ()+"W"+event.getBlock().getLocation().getWorld().getName()+".txt");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				Bukkit.broadcastMessage(ChatColor.RED+"Erro Inesperado!");
+				//Bukkit.broadcastMessage(ChatColor.RED+"Erro Inesperado!");
 				e.printStackTrace();
 			}
     		

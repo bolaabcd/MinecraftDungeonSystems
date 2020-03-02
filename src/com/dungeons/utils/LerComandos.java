@@ -46,8 +46,12 @@ public class LerComandos {
 		}
 		return res;
 	}
-	public static World toworld(String arg,Player p) {
+	public static World toworld(String arg,Player p) throws NumberFormatException{
 		if(arg.equals("here"))return p.getWorld();
-		else return Bukkit.getWorld(arg);
+		else {
+			World saida=Bukkit.getWorld(arg);
+			if(saida==null)throw new NumberFormatException();
+			else return saida;
+		}
 	}
 }

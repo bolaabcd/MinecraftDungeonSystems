@@ -5,34 +5,43 @@ import java.io.IOException;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.dungeons.actor.AdicionarComandoBloco;
-import com.dungeons.actor.AdicionarTrueComando;
 import com.dungeons.actor.CancelarInteracao;
 import com.dungeons.actor.RedstoneListener;
-import com.dungeons.actor.SetarCancelar;
+import com.dungeons.comandos.AddComandoBlocarea;
+import com.dungeons.comandos.Addtemporizator;
+import com.dungeons.comandos.AdicionarComandoBloco;
+import com.dungeons.comandos.AdicionarTrueComando;
+import com.dungeons.comandos.FastArea;
+import com.dungeons.comandos.GetStado;
+import com.dungeons.comandos.SetarCancelar;
+import com.dungeons.comandos.UpdateBlocks;
+import com.dungeons.comandos.addCords;
 
 public class starter extends JavaPlugin{
+	private static Plugin instancia;
 	@Override
     public void onEnable() {
-    Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN+"PLUGIN ATIVADO!");
+    Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN+"PLUGIN DE DUNGEONS ATIVADO!");
     
     setcomandos();
     
     setlisteners();
 	
     criarquivo();
+    
+    instancia=this;
 	}
     @Override
     public void onDisable() {
-    Bukkit.getConsoleSender().sendMessage(ChatColor.RED+"PLUGIN DESATIVADO!");
+    Bukkit.getConsoleSender().sendMessage(ChatColor.RED+"PLUGIN DE DUNGEONS DESATIVADO!");
 
     }
     private void criarquivo() {
     	File armazem = new File("plugins/Dungeonizator/locais.txt");
     	File comandos=new File("plugins/Dungeonizator/roteiros");
-    	File condicoes=new File("plugins/Dungeonizator/condicoes");
     	if (!armazem.exists()) {
     	try {
     		new File("plugins/Dungeonizator").mkdir();
@@ -42,7 +51,6 @@ public class starter extends JavaPlugin{
 		}
     	}
     	if(!comandos.exists())comandos.mkdir();
-    	if(!condicoes.exists())condicoes.mkdir();
 
     }
     private void setlisteners() {
@@ -56,5 +64,13 @@ public class starter extends JavaPlugin{
     	this.getCommand("addcomb").setExecutor(new AdicionarComandoBloco());
     	this.getCommand("addtruc").setExecutor(new AdicionarTrueComando());
     	this.getCommand("setcanc").setExecutor(new SetarCancelar());
+    	this.getCommand("addcombs").setExecutor(new AddComandoBlocarea());
+    	this.getCommand("addtemp").setExecutor(new Addtemporizator());
+    	this.getCommand("fastarea").setExecutor(new FastArea());
+    	this.getCommand("upblocks").setExecutor(new UpdateBlocks());
     }
+    public static Plugin getPlugin() {
+    	return instancia;
+    }
+    
 }

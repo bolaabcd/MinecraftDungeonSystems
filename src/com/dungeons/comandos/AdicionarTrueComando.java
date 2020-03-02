@@ -1,4 +1,4 @@
-package com.dungeons.actor;
+package com.dungeons.comandos;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -34,12 +34,12 @@ public class AdicionarTrueComando implements CommandExecutor{
 					args[3]=LerComandos.toworld(args[3], player).getName();}
 				catch(NumberFormatException n) {
 					player.sendMessage(ChatColor.RED+"Coordenadas inválidas!");
-					return false;
+					return true;
 					}
 				try {
 					if(!Readarquivos.hascoords(cordsob[0],cordsob[1],cordsob[2],args[3])) {
 						player.sendMessage(ChatColor.RED+"O bloco obserbado não está salvo como bloco observável!");
-						return false;
+						return true;
 					}
 					String finali="";
 					for(String parte:Arrays.copyOfRange(args, 5, args.length)) {
@@ -47,7 +47,7 @@ public class AdicionarTrueComando implements CommandExecutor{
 					}
 					if(Readarquivos.hascomando("plugins/Dungeonizator/roteiros/"+"X"+cordsob[0]+"Y"+cordsob[1]+"Z"+cordsob[2]+"W"+args[3]+".txt", "C"+"\n"+finali+"\n")) {
 						player.sendMessage(ChatColor.RED+"Comando já salvo!");
-						return false;
+						return true;
 					}
 					BufferedWriter bw=new BufferedWriter(new FileWriter(new File("plugins/Dungeonizator/roteiros/"+"X"+cordsob[0]+"Y"+cordsob[1]+"Z"+cordsob[2]+"W"+args[3]+".txt"),true));
 					bw.append("C"+"\n");
@@ -56,7 +56,8 @@ public class AdicionarTrueComando implements CommandExecutor{
 				} catch (IOException e) {
 					player.sendMessage(ChatColor.RED+"ERRO INESPERADO: Erro ao ler os arquivos de observação de blocos ou o arquivo de comando para o bloco especificado!");
 					e.printStackTrace();
-					return false;
+					player.sendMessage(e.getMessage());
+					return true;
 				}
 				
 			}else if(args.length!=8)return false;
@@ -68,7 +69,7 @@ public class AdicionarTrueComando implements CommandExecutor{
 					args[7]=LerComandos.toworld(args[7], player).getName();}
 				catch(NumberFormatException n) {
 					player.sendMessage(ChatColor.RED+"Coordenadas inválidas!");
-					return false;
+					return true;
 					}
 				BlockState data=Bukkit.getWorld(args[7]).getBlockAt(cordsat[0], cordsat[1], cordsat[2]).getState();
 				if(Bukkit.getWorld(args[7]).getBlockAt(cordsat[0], cordsat[1], cordsat[2]).getBlockData().getMaterial().equals(Material.COMMAND_BLOCK)) {
@@ -78,7 +79,7 @@ public class AdicionarTrueComando implements CommandExecutor{
 					try {
 						if(Readarquivos.hascomando("plugins/Dungeonizator/roteiros/"+"X"+cordsob[0]+"Y"+cordsob[1]+"Z"+cordsob[2]+"W"+args[3]+".txt", "C"+"\n"+comandante+"\n")) {
 							player.sendMessage(ChatColor.RED+"Comando já salvo!");
-							return false;
+							return true;
 						}
 						bw = new BufferedWriter(new FileWriter(new File("plugins/Dungeonizator/roteiros/"+"X"+cordsob[0]+"Y"+cordsob[1]+"Z"+cordsob[2]+"W"+args[3]+".txt"),true));
 						bw.append("C"+"\n");
@@ -87,17 +88,18 @@ public class AdicionarTrueComando implements CommandExecutor{
 					} catch (IOException e) {
 						player.sendMessage(ChatColor.RED+"ERRO INESPERADO: Erro ao ler os arquivos de observação de blocos ou o arquivo de comando para o bloco especificado!");
 						e.printStackTrace();
-						return false;
+						player.sendMessage(e.getMessage());
+						return true;
 					}
 				}else {
 					player.sendMessage(ChatColor.RED+"O bloco Selecionado não é um bloco de comando comum!");
-					return false;
+					return true;
 				}
 		}
 		return true;
 		}else {
 			sender.sendMessage(ChatColor.RED+"Comando para players apenas.");
-			return false;
+			return true;
 		}
 	}
 }

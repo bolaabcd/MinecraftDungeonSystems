@@ -1,4 +1,4 @@
-package com.dungeons.detector;
+package com.dungeons.comandos;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
